@@ -1,13 +1,12 @@
-{ pkgs }: 
-let
-  flutter = pkgs.flutter.override {
-    version = "3.0.5"; # Choose a version compatible with your flutter SDK constraints
-    dart-sdk-version = "2.17.6"; # Ensure this Dart SDK version is compatible with your Flutter version
-  };
-in
-pkgs.mkShell {
-  buildInputs = [ flutter ];
-  shellHook = ''
-    export PATH=${flutter}/bin:$PATH
-  '';
+{ pkgs ? import <nixpkgs> {} }:
+
+ pkgs.mkShell {
+   buildInputs = [
+     pkgs.flutter
+   ];
+ }
+pkgs.androidenv.composeAndroidPackages {
+  platformVersions = [ "9" ]; # Specify the Android SDK platform version here
+  includeNDK = true; # Include the NDK if needed
+  # Add additional configurations if necessary
 }
