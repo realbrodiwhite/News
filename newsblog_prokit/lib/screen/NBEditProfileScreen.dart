@@ -26,7 +26,7 @@ class NBEditProfileScreenState extends State<NBEditProfileScreen> {
   bool loadFromFile = false;
 
   Future getImage(ImageSource source) async {
-    var image = await ImagePicker().getImage(source: source);
+    var image = await ImagePicker().pickImage(source: source);
     setState(
       () {
         if (image != null) {

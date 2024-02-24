@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:newsblog_prokit/main.dart';
 import 'package:newsblog_prokit/utils/NBColors.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Widget nbAppTextFieldWidget(TextEditingController controller, String hintText, TextFieldType textFieldType, {FocusNode? focus, FocusNode? nextFocus}) {
   return AppTextField(
@@ -61,7 +60,7 @@ InputDecoration nbInputDecoration(BuildContext context, {String? hintText, Widge
 }
 
 Future<void> launchURL(String url, {bool forceWebView = false}) async {
-  await launch(url, enableJavaScript: true, forceWebView: forceWebView).catchError(
+  await launchURL(url, enableJavaScript: true, forceWebView: forceWebView).catchError(
     (e) {
       throw '$url is not valid';
     },
